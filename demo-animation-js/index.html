@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Animation.js"></script>
+
+</head>
+
+<body>
+    <canvas id="myCanvas" width="1000" height="400" style="border: 1px solid #000000;"></canvas>
+    <script>
+        let canvas = document.getElementById('myCanvas');
+        let anim1 = new Animation(canvas, 'Images/character.png', 4, 4);
+        let ninja = new Animation(canvas, 'Images/ninja.png', 4, 7);
+        let coin = new Animation(canvas, 'Images/coin.png', 1, 10);
+        let ben10 = new Animation(canvas, "Images/ben10.png", 2, 8);
+
+        let x = 0;
+        let y = 0
+        let speed = 10;
+        ben10.indexRow = 1;
+
+        function loop() {
+            setInterval(function() {
+                canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+                ben10.updateFrame();
+                ben10.drawImage();
+                move();
+            }, 100);
+        }
+        loop();
+
+        function move() {
+            ben10.x += 15;
+        }
+    </script>
+</body>
+
+</html>

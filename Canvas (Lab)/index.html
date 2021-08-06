@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Lab</title>
+    <script src="Fish.js"></script>
+    <script src="Player.js"></script>
+    <script src="Game.js"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <script>
+        let game = new Game();
+        game.init();
+
+        function main() {
+            game.clearScreen();
+            game.createFish();
+            game.moveFish();
+            game.checkCrash();
+            game.renderFish();
+            game.player.renderImg(game.paper)
+        }
+
+        function movePlayer(evt) {
+            switch (evt.key) {
+                case "d":
+                    game.player.direct = "right";
+                    break;
+                case "a":
+                    game.player.direct = "left";
+                    break;
+                case "w":
+                    game.player.direct = "up";
+                    break;
+                case "s":
+                    game.player.direct = "down";
+                    break;
+            }
+            game.player.move();
+        }
+        setInterval(main, 60);
+        window.addEventListener('keydown', movePlayer)
+    </script>
+</body>
+
+</html>
